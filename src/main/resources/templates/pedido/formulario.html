@@ -20,18 +20,27 @@
 			<form th:object="${requisicaoNovoPedido}" action="/pedido/novo" method="post" class="card-body">
 				<div class="form-group"> 
 					<label for="nomeProduto">Produto</label>
-					<input th:field="*{nomeProduto}" class="form-control" placeholder="nome do produto" /> 
+					<input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="nome do produto" /> 
 					<small>Informe o nome do produto</small>
+					<div th:errors="*{nomeProduto}" class="invalid-feedback">
+						Erros do nome do produto
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="urlProduto">Url</label>
-					<input th:field="*{urlProduto}" class="form-control" placeholder="url do produto" />
+					<input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" name="urlProduto" placeholder="url do produto" />
 					<small>Procure em um site o produto que você deseja e cole a url aqui</small>
+					<div th:errors="*{urlProduto}" class="invalid-feedback">
+						Erros da url do produto
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="urlImagem">Imagem</label>
-					<input th:field="*{urlImagem}" class="form-control" placeholder="url da imagem" />
+					<input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="url da imagem" />
 					<small>Copie a url de uma boa imagem do produto e cole aqui para ajudar os compradores</small>
+					<div th:errors="*{urlImagem}" class="invalid-feedback">
+						Erros da url da imagem do produto
+					</div>
 				</div>
 				<div class="form-group mb-2">
 					<label for="descricao">Descrição</label>
