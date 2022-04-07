@@ -3,6 +3,7 @@ package br.com.alura.mvc.mudi.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,8 +23,14 @@ public class Pedido {
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
+	
+	@Column(columnDefinition="text")
 	private String urlProduto;
+	
+	@Column(columnDefinition="text")
 	private String urlImagem;
+	
+	@Column(columnDefinition="text")
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
