@@ -23,7 +23,6 @@ public class HomeController {
 	
 	@GetMapping
 	public String home(Model model) {
-				
 		List<Pedido> pedidos = pedidosRepository.findAll();	
 		model.addAttribute("pedidos", pedidos);
 				
