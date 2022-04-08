@@ -6,9 +6,11 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Pedido {
@@ -19,15 +21,33 @@ public class Pedido {
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
+	
+	//Para criar o banco para receber dados maior que uma varchar de 255
+	//@Column(columnDefinition="text")
 	private String urlProduto;
+	
+	//@Column(columnDefinition="text")
 	private String urlImagem;
+	
+	//@Column(columnDefinition="text")
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
 	
 	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public StatusPedido getStatus() {
 		return status;
 	}
@@ -94,9 +114,10 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [nomeProduto=" + nomeProduto + ", valorNegociado=" + valorNegociado + ", dataDaEntrega="
-				+ dataDaEntrega + ", urlProduto=" + urlProduto + ", urlImagem=" + urlImagem + ", descricao=" + descricao
-				+ "]";
+		return "Pedido [id=" + id + ", nomeProduto=" + nomeProduto + ", valorNegociado=" + valorNegociado
+				+ ", dataDaEntrega=" + dataDaEntrega + ", urlProduto=" + urlProduto + ", urlImagem=" + urlImagem
+				+ ", descricao=" + descricao + ", status=" + status + ", user=" + user + "]";
 	}
+
 
 }
