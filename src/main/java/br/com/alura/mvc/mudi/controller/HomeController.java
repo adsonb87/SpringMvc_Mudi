@@ -27,11 +27,10 @@ public class HomeController {
 		
 		//Ordenação
 		Sort sort = Sort.by("dataDaEntrega").descending();
+		//Para paginacao
+		//PageRequest pageRequest = PageRequest.of(0, 10, sort);
 		
-		//Paginação
-		PageRequest paginacao = PageRequest.of(0, 10, sort);
-		
-		List<Pedido> pedidos = pedidosRepository.findByStatus(StatusPedido.ENTREGUE, paginacao);
+		List<Pedido> pedidos = pedidosRepository.findByStatus(StatusPedido.ENTREGUE, sort);
 		model.addAttribute("pedidos", pedidos);
 				
 		return "home";
