@@ -3,33 +3,37 @@ package br.com.alura.mvc.mudi.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Pedido {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
 	
 	//Para criar o banco para receber dados maior que uma varchar de 255
-	//@Column(columnDefinition="text")
+	@Column(columnDefinition="text")
 	private String urlProduto;
 	
-	//@Column(columnDefinition="text")
+	@Column(columnDefinition="text")
 	private String urlImagem;
 	
-	//@Column(columnDefinition="text")
+	@Column(columnDefinition="text")
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
