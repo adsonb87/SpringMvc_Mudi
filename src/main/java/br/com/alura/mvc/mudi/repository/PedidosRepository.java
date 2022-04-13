@@ -15,6 +15,7 @@ import br.com.alura.mvc.mudi.model.StatusPedido;
 @Repository
 public interface PedidosRepository extends JpaRepository<Pedido, Long>{
 	
+	
 	@Cacheable("books")
 	List<Pedido> findByStatus(StatusPedido aguardando, Sort sort);
 	
